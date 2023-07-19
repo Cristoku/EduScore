@@ -18,5 +18,6 @@ namespace EduScoreDatabase
         [Required]
         public string Password { get; set; }
 
+        public ICollection<Grade> Grades { get; set; }
     }
 }
