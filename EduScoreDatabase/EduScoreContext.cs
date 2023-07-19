@@ -1,6 +1,8 @@
-﻿namespace EduScoreDatabase
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace EduScoreDatabase
 {
-    public class Class1
+    public class EduScoreContext : DbContext
     {
 
     }
