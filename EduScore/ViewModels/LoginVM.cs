@@ -54,7 +54,7 @@ public class LoginVM : INotifyPropertyChanged
     {
         if (_loginstudent.LoginUser(Name, Password))
         {
-            var window = new Logged();
+            var window = new Logged(Name);
             if (Application.Current.MainWindow != null) Application.Current.MainWindow.Close();
             Application.Current.MainWindow = window;
             window.Show();

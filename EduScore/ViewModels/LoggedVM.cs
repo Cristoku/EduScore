@@ -1,42 +1,33 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations.Operations;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-using System.Windows.Controls;
 using EduScore.Views;
 using EduScoreDatabase;
 using EduScoreDatabase.CommandsQueries;
 
-namespace EduScore.ViewModels
-{
+namespace EduScore.ViewModels;
+
 public class LoggedVM : INotifyPropertyChanged
 {
     private readonly ShowData _showData;
 
-    private ObservableCollection<Grade> _displayGrades;
+    private ObservableCollection<GradeConverted> _displayGrades;
 
-    public LoggedVM()
+    public LoggedVM(string StudentName)
     {
         _showData = new ShowData(new EduScoreContext());
         PlanLekcjiCommand = new BasicCommand(PlanLekcjiView);
         PrzedmiotyCommand = new BasicCommand(PrzedmiotyView);
         OcenyCommand = new BasicCommand(OcenyView);
-        UpdatePartsTable();
+        OstatnieOceny();
     }
 
     public BasicCommand PlanLekcjiCommand { get; set; }
     public BasicCommand PrzedmiotyCommand { get; set; }
     public BasicCommand OcenyCommand { get; set; }
 
-    public ObservableCollection<Grade> NajnowszeOceny
+    public ObservableCollection<GradeConverted> NajnowszeOceny
     {
         get => _displayGrades;
         set
@@ -74,9 +65,14 @@ public class LoggedVM : INotifyPropertyChanged
         window.Show();
     }
 
-    public void UpdatePartsTable()
+    public void OstatnieOceny()
     {
-        NajnowszeOceny = new ObservableCollection<Grade>(_showData.GetData<Grade>());
+        var GradesRaw = _showData.GetData<Grade>();
+
+        var gradesTypeTransfer = new GradesTypeTransfer(GradesRaw);
+
+        gradesTypeTransfer.ConvertGrades();
+
+        NajnowszeOceny = new ObservableCollection<GradeConverted>(gradesTypeTransfer.ConvertGrades());
     }
-}
 }

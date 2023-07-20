@@ -40,6 +40,14 @@ public class ExampleData
             {
                 Name = "Fizyka"
             };
+            var subject4 = new Subject
+            {
+                Name = "Język Angielski"
+            };
+            var subject5 = new Subject
+            {
+                Name = "Język Francuski"
+            };
 
             dbContext.Subjects.AddRange(subject1, subject2, subject3);
 

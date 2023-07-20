@@ -20,10 +20,10 @@ namespace EduScore.Views
     /// </summary>
     public partial class Logged : Window
     {
-        public Logged()
+        public Logged(string StudentID)
         {
             InitializeComponent();
-            DataContext = new LoggedVM();
+            DataContext = new LoggedVM(StudentID);
         }
 
     }
