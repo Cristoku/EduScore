@@ -11,20 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using EduScore.ViewModels;
 
 namespace EduScore.Views
 {
     /// <summary>
-    /// Interaction logic for Logged.xaml
+    /// Interaction logic for Przedmioty.xaml
     /// </summary>
-    public partial class Logged : Window
+    public partial class Przedmioty : Window
     {
-        public Logged()
+        public Przedmioty()
         {
             InitializeComponent();
-            DataContext = new LoggedVM();
         }
-
     }
 }

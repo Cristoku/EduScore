@@ -5,8 +5,86 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EduScore.Views"
         mc:Ignorable="d"
-        Title="Logged" Height="450" Width="800">
+        Title="Logged" Height="800" Width="500">
+    <Window.Effect>
+        <DropShadowEffect/>
+    </Window.Effect>
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/background.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
         
-    </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <Border Padding="10" Grid.Row="0" Background="Gainsboro" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="20">
+                    <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center">
+                        <Image Width="150" Margin="0 20 0 0" Source="../Images/logo.png"></Image>
+                        <TextBlock Text="EduScore" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" 
+                                   Foreground="Black" 
+                                   FontSize="55"
+                                   FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+
+
+                <Border Padding="20"  Grid.Row="1" Background="Gainsboro" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="20">
+                        <StackPanel Orientation="Vertical">
+                        <Button Command="{Binding OcenyCommand}" 
+                                Margin="10" 
+                                Height="40" 
+                                Width="300" 
+                                Content="OCENY" 
+                                Background="White" 
+                                Foreground="Black" 
+                                FontSize="25" 
+                                FontWeight="Bold"/>
+                        <Button Command="{Binding PlanLekcjiCommand}" 
+                                Margin="10" 
+                                Height="40" 
+                                Width="300" 
+                                Content="PLAN LEKCJI" 
+                                Background="White" 
+                                Foreground="Black" 
+                                FontSize="25" 
+                                FontWeight="Bold"/>
+                        <Button Command="{Binding PrzedmiotyCommand}" 
+                                Margin="10" 
+                                Height="40" 
+                                Width="300" 
+                                Content="PRZEDMIOTY" 
+                                Background="White" 
+                                Foreground="Black" 
+                                FontSize="25" 
+                                FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+                <Border Height="250" Width="400" Grid.Row="2" Background="Gainsboro" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="20">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Najnowsze oceny" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" 
+                                   Foreground="Black" 
+                                   FontSize="25"
+                                   Padding="5"
+                                   />
+                        <DataGrid ItemsSource="{Binding NajnowszeOceny}" 
+                                  Foreground="Black"
+                                  Background="Transparent"
+                                  FontWeight="Bold" 
+                                  IsReadOnly="True" 
+                                  ColumnWidth="*" 
+                                  AutoGenerateColumns="True" 
+                                  BorderThickness="0"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+        </Grid>
 </Window>

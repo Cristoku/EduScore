@@ -20,6 +20,7 @@
     <ColumnDefinition Width="*"/>
 </Grid.ColumnDefinitions>
             <Rectangle Grid.Column="0" Fill="White" Margin="50" Opacity="0.8" RadiusX="10" RadiusY="10" />
+            <Rectangle Grid.Column="1" Fill="White" Margin="50" Opacity="0.8" RadiusX="10" RadiusY="10" />
 
             <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
                 <Image Source="/Images/logo.png" Margin="10" Width="180"></Image>
