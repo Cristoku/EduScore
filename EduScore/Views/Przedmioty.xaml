@@ -49,18 +49,11 @@
                 <Border  Background="Gainsboro" CornerRadius="30"></Border>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <StackPanel>
-                        <TextBlock Text="StudentId" HorizontalAlignment="Center"></TextBlock>
-                        <TextBox Margin="10" Text="{Binding StudentId}" Height="30" Width="150" FontSize="15"/>
+                        <TextBlock Text="Nazwa przedmiotu" HorizontalAlignment="Center"></TextBlock>
+                        <TextBox Margin="10" Text="{Binding SubjectName}" Height="30" Width="150" FontSize="15"/>
                     </StackPanel>
-                    <StackPanel>
-                        <TextBlock Text="SubjectId" HorizontalAlignment="Center"></TextBlock>
-                        <TextBox Margin="10" Text="{Binding SubjectId}" Height="30" Width="150" FontSize="15"/>
-                    </StackPanel>
-                    <StackPanel >
-                        <TextBlock Text="Value" HorizontalAlignment="Center"></TextBlock>
-                        <TextBox Margin="10" Text="{Binding Value}" Height="30" Width="150"  FontSize="15"></TextBox>
-                    </StackPanel>
-                    <Button Command="{Binding Add}" Margin="0 16 0 0" Height="30" Width="150" Content="DODAJ OCENE" Background="White" Foreground="Black" FontSize="20" ></Button>
+
+                    <Button Command="{Binding Add}" Margin="0 16 0 0" Height="30" Width="150" Content="DODAJ" Background="White" Foreground="Black" FontSize="20" ></Button>
 
                 </StackPanel>
 
