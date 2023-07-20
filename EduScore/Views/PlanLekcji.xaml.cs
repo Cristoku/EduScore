@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using EduScore.ViewModels;
+using EduScoreDatabase;
 
 namespace EduScore.Views
 {
@@ -22,6 +24,7 @@ namespace EduScore.Views
         public PlanLekcji()
         {
             InitializeComponent();
+            DataContext = new PlanLekcjiVM(new EduScoreContext());
         }
     }
 }

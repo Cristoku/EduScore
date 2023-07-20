@@ -6,7 +6,75 @@
         xmlns:local="clr-namespace:EduScore.Views"
         mc:Ignorable="d"
         Title="PlanLekcji" Height="450" Width="800">
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/background.jpg"/>
+    </Window.Background>
+    <Window.Effect>
+        <DropShadowEffect/>
+    </Window.Effect>
     <Grid>
-        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+             </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <Border  Background="Gainsboro" CornerRadius="30">
+                <TextBlock Text="Podgląd planów lekcji uczniów" 
+                           VerticalAlignment="Center" 
+                           Margin="30"
+                           HorizontalAlignment="Center" 
+                           Foreground="Black" 
+                           FontSize="25"
+                           FontWeight="Bold"/>
+                </Border>
+            </StackPanel>
+            <DataGrid Grid.Row="2" ItemsSource="{Binding OcenyPodglad}" 
+                      Foreground="Black"
+                      Background="White"
+                      FontWeight="Bold" 
+                      IsReadOnly="True" 
+                      ColumnWidth="*" 
+                      Margin="20"
+                      AutoGenerateColumns="True" 
+                      BorderThickness="0"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                <Border  Background="Gainsboro" CornerRadius="30"></Border>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel>
+                        <TextBlock Text="SubjectId" HorizontalAlignment="Center"></TextBlock>
+                        <TextBox Margin="10" Text="{Binding SubjectId}" Height="30" Width="150" FontSize="15"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="TeacherName" HorizontalAlignment="Center"></TextBlock>
+                        <TextBox Margin="10" Text="{Binding TeacherName}" Height="30" Width="150" FontSize="15"/>
+                    </StackPanel>
+                    <StackPanel >
+                        <TextBlock Text="Content" HorizontalAlignment="Center"></TextBlock>
+                        <TextBox Margin="10" Text="{Binding Content}" Height="30" Width="150"  FontSize="15"></TextBox>
+                    </StackPanel>
+                    <Button Command="{Binding Add}" Margin="0 16 0 0" Height="30" Width="150" Content="DODAJ LEKCJE" Background="White" Foreground="Black" FontSize="20" ></Button>
+
+                </StackPanel>
+
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Border  Background="Gainsboro" CornerRadius="30"></Border>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBox VerticalAlignment="Center" Margin="10" Text="{Binding ID}" Height="30" Width="150"  FontSize="15"></TextBox>
+                        <Button Command="{Binding Remove}"  Height="30" Width="150" Content="USUN" Background="White" Foreground="Black" FontSize="20" ></Button>
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+
+        </Grid>
     </Grid>
 </Window>

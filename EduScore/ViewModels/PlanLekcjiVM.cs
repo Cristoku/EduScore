@@ -1,16 +1,19 @@
-﻿using System;
+﻿using EduScoreDatabase.CommandsQueries;
+using EduScoreDatabase;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Windows;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
-using EduScoreDatabase;
-using EduScoreDatabase.CommandsQueries;
+using System.Windows;
 
-namespace EduScore.ViewModels;
-
-public class OcenyVM : INotifyPropertyChanged
+namespace EduScore.ViewModels
+{
+public class PlanLekcjiVM : INotifyPropertyChanged
 {
     private readonly EduScoreContext _context;
     private readonly RemovingCommands _removingCommands;
@@ -18,15 +21,16 @@ public class OcenyVM : INotifyPropertyChanged
     private string _id;
     private readonly ShowData _showData;
 
-    private string _studentId;
+    private string _content;
+    private string _teacherName;
 
     private string _subjectId;
 
-    private ObservableCollection<Grade> _TableDisplay;
+    private ObservableCollection<LessonPlan> _TableDisplay;
 
     private string _value;
 
-    public OcenyVM(EduScoreContext context)
+    public PlanLekcjiVM(EduScoreContext context)
     {
         _context = context;
         _showData = new ShowData(_context);
@@ -34,19 +38,6 @@ public class OcenyVM : INotifyPropertyChanged
         Add = new BasicCommand(AddElementToDb);
         Remove = new BasicCommand(RemoveFromDb);
         UpdateTable();
-    }
-
-    public string StudentId
-    {
-        get => _studentId;
-        set
-        {
-            if (_studentId != value)
-            {
-                _studentId = value;
-                OnPropertyChanged();
-            }
-        }
     }
 
     public string SubjectId
@@ -62,14 +53,27 @@ public class OcenyVM : INotifyPropertyChanged
         }
     }
 
-    public string Value
+    public string TeacherName
     {
-        get => _value;
+        get => _teacherName;
         set
         {
-            if (_value != value)
+            if (_teacherName != value)
             {
-                _value = value;
+                _teacherName = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+
+    public string Content
+    {
+        get => _content;
+        set
+        {
+            if (_content != value)
+            {
+                _content = value;
                 OnPropertyChanged();
             }
         }
@@ -88,7 +92,7 @@ public class OcenyVM : INotifyPropertyChanged
         }
     }
 
-    public ObservableCollection<Grade> OcenyPodglad
+    public ObservableCollection<LessonPlan> OcenyPodglad
     {
         get => _TableDisplay;
         set
@@ -109,7 +113,7 @@ public class OcenyVM : INotifyPropertyChanged
             return;
         }
 
-        if(_removingCommands.RemoveGradeById(Convert.ToInt32(ID)))
+        if(_removingCommands.RemoveLessonById(Convert.ToInt32(ID)))
         {
             MessageBox.Show("Usunięto element z bazy danych");
         }
@@ -118,44 +122,47 @@ public class OcenyVM : INotifyPropertyChanged
             MessageBox.Show("Nie znaleziono elementu o podanym ID");
             return;
         }
-
+        ID = "";
         UpdateTable();
     }
 
     private void AddElementToDb()
     {
-        if (!int.TryParse(StudentId, out var studentId))
+        if (!int.TryParse(SubjectId, out var studentId))
         {
-            MessageBox.Show("Niepoprawny Student ID");
+            MessageBox.Show("Niepoprawny SubjectId");
             return;
         }
 
-        if (!int.TryParse(SubjectId, out var subjectId))
+        if (String.IsNullOrWhiteSpace(TeacherName))
         {
-            MessageBox.Show("Niepoprawny Subject ID");
+            MessageBox.Show("Niepoprawne TeacherName");
             return;
         }
 
-        if (!int.TryParse(Value, out var value))
+        if (String.IsNullOrWhiteSpace(Content))
         {
-            MessageBox.Show("Niepoprawne Value");
+            MessageBox.Show("Niepoprawne Content");
             return;
         }
 
         var savingCommands = new SavingCommands();
-        savingCommands.SaveData(new Grade
+        savingCommands.SaveData(new LessonPlan()
         {
-            StudentId = Convert.ToInt32(StudentId),
             SubjectId = Convert.ToInt32(SubjectId),
-            Value = Convert.ToInt32(Value)
+            TeacherName = TeacherName,
+            Content = Content
         });
+        SubjectId = "";
+        TeacherName = "";
+        Content = "";
         UpdateTable();
     }
 
     public void UpdateTable()
     {
-        var GradesRaw = _showData.GetData<Grade>();
-        OcenyPodglad = new ObservableCollection<Grade>(GradesRaw);
+        var GradesRaw = _showData.GetData<LessonPlan>();
+        OcenyPodglad = new ObservableCollection<LessonPlan>(GradesRaw);
     }
 
     #region INotifyPropertyChanged
@@ -176,4 +183,5 @@ public class OcenyVM : INotifyPropertyChanged
     }
 
     #endregion
+}
 }

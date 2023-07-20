@@ -21,7 +21,7 @@ namespace EduScoreDatabase.CommandsQueries
                 _context.SaveChanges();
         }
 
-        public bool RemoveDataById(int id)
+        public bool RemoveGradeById(int id)
         {
             var dataToRemove = _context.Set<Grade>().FirstOrDefault(item => item.GradeId == id);
 
@@ -31,6 +31,34 @@ namespace EduScoreDatabase.CommandsQueries
             }
 
             _context.Set<Grade>().Remove(dataToRemove);
+            _context.SaveChanges();
+            return true;
+        }
+
+        public bool RemoveSubjectById(int id)
+        {
+            var dataToRemove = _context.Set<Subject>().FirstOrDefault(item => item.SubjectId == id);
+
+            if (dataToRemove == null)
+            {
+                return false;
+            }
+
+            _context.Set<Subject>().Remove(dataToRemove);
+            _context.SaveChanges();
+            return true;
+        }
+
+        public bool RemoveLessonById(int id)
+        {
+            var dataToRemove = _context.Set<LessonPlan>().FirstOrDefault(item => item.LessonPlanId == id);
+
+            if (dataToRemove == null)
+            {
+                return false;
+            }
+
+            _context.Set<LessonPlan>().Remove(dataToRemove);
             _context.SaveChanges();
             return true;
         }
