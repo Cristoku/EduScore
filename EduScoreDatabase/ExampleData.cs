@@ -49,7 +49,7 @@ public class ExampleData
                 Name = "Język Francuski"
             };
 
-            dbContext.Subjects.AddRange(subject1, subject2, subject3);
+            dbContext.Subjects.AddRange(subject1, subject2, subject3, subject4, subject5);
 
             var grade1 = new Grade
             {
@@ -69,8 +69,26 @@ public class ExampleData
                 Subject = subject1,
                 Value = 3
             };
+            var grade4 = new Grade
+            {
+                Student = student1,
+                Subject = subject1,
+                Value = 3
+            };
+            var grade5 = new Grade
+            {
+                Student = student1,
+                Subject = subject2,
+                Value = 5
+            };
+            var grade6 = new Grade
+            {
+                Student = student1,
+                Subject = subject3,
+                Value = 2
+            };
 
-            dbContext.Grades.AddRange(grade1, grade2, grade3);
+            dbContext.Grades.AddRange(grade1, grade2, grade3, grade4, grade5, grade6);
 
             var lessonPlan1 = new LessonPlan
             {
@@ -84,8 +102,20 @@ public class ExampleData
                 TeacherName = "Maria Kowalska",
                 Content = "Lesson plan for Język Polski"
             };
+            var lessonPlan3 = new LessonPlan
+            {
+                Subject = subject3,
+                TeacherName = "Sebastian Krakus",
+                Content = "Lesson plan for Język Polski"
+            };
+            var lessonPlan4 = new LessonPlan
+            {
+                Subject = subject4,
+                TeacherName = "Dawid Kragula",
+                Content = "Lesson plan for Język Polski"
+            };
 
-            dbContext.LessonPlans.AddRange(lessonPlan1, lessonPlan2);
+            dbContext.LessonPlans.AddRange(lessonPlan1, lessonPlan2,lessonPlan3,lessonPlan4);
 
             var teacher1 = new Teacher
             {
@@ -95,8 +125,16 @@ public class ExampleData
             {
                 Name = "Maria Kowalska"
             };
+            var teacher3 = new Teacher
+            {
+                Name = "Dawid Kragula"
+            };
+            var teacher4 = new Teacher
+            {
+                Name = "Sebastian Krakus"
+            };
 
-            dbContext.Teachers.AddRange(teacher1, teacher2);
+            dbContext.Teachers.AddRange(teacher1, teacher2, teacher3, teacher4);
 
             dbContext.SaveChanges();
         }

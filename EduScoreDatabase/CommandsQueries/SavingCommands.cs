@@ -8,7 +8,7 @@ namespace EduScoreDatabase.CommandsQueries
 {
     public class SavingCommands
     {
-        private readonly EduScoreContext _context;
+        private  EduScoreContext _context;
 
         public SavingCommands()
         {
@@ -17,15 +17,12 @@ namespace EduScoreDatabase.CommandsQueries
 
         public void SaveData<T>(T data) where T : class
         {
-
                 _context.Set<T>().Add(data);
                 _context.SaveChanges();
-
         }
-
+        
         public void SaveData<T>(List<T> dataList) where T : class
         {
-
                 _context.Set<T>().AddRange(dataList);
                 _context.SaveChanges();
         }
