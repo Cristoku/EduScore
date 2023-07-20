@@ -18,10 +18,9 @@ namespace EduScoreDatabase.CommandsQueries
         public List<T> GetData<T>() where T : class
         {
             List<T> dataList = new List<T>();
-            using (var context = _context)
-            {
-                dataList = context.Set<T>().ToList();
-            }
+
+                dataList = _context.Set<T>().ToList();
+
             return dataList;
         }
 

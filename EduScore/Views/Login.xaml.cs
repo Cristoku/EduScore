@@ -15,6 +15,7 @@ public partial class Login : Window
     public Login()
     {
         InitializeComponent();
+        //DataContext = new LoginVM(new EduScoreContext());
         DataContext = _loginVm;
     }
 

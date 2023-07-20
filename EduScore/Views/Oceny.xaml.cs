@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using EduScore.ViewModels;
+using EduScoreDatabase;
 
 namespace EduScore.Views
 {
@@ -19,9 +21,10 @@ namespace EduScore.Views
     /// </summary>
     public partial class Oceny : Window
     {
-        public Oceny()
+        public Oceny(EduScoreContext context)
         {
             InitializeComponent();
+            DataContext = new OcenyVM(context);
         }
     }
 }

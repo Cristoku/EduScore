@@ -46,7 +46,7 @@ public class LoggedVM : INotifyPropertyChanged
 
     private void OcenyView()
     {
-        var window = new Oceny();
+        var window = new Oceny(new EduScoreContext());
         Application.Current.MainWindow = window;
         window.Show();
     }
