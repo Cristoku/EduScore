@@ -8,3 +8,7 @@ EduScore to aplikacja desktopowa napisana w języku C# z wykorzystaniem technolo
 - Plan lekcji: Aplikacja umożliwia przeglądanie planu lekcji i dostęp do szczegółowych informacji o każdej lekcji.
 - Zarządzanie nauczycielami: Użytkownicy mają możliwość przeglądania listy nauczycieli oraz zarządzanie nią.
 - Baza danych SQLite: Aplikacja korzysta z lokalnej bazy danych SQLite, co pozwala na przechowywanie i zarządzanie danymi użytkowników.
+
+#Testowe dane do logowania
+username: JanKowalski
+password: password1
