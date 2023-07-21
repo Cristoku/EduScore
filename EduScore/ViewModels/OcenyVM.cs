@@ -10,6 +10,9 @@ using EduScoreDatabase.CommandsQueries;
 
 namespace EduScore.ViewModels;
 
+/// <summary>
+/// Represents a view model for managing grades in the EduScore application.
+/// </summary>
 public class OcenyVM : INotifyPropertyChanged
 {
     private readonly EduScoreContext _context;
@@ -26,6 +29,10 @@ public class OcenyVM : INotifyPropertyChanged
 
     private string _value;
 
+    /// <summary>
+    /// Initializes a new instance of the OcenyVM class with the specified EduScoreContext.
+    /// </summary>
+    /// <param name="context">The EduScoreContext database context.</param>
     public OcenyVM(EduScoreContext context)
     {
         _context = context;
@@ -36,6 +43,9 @@ public class OcenyVM : INotifyPropertyChanged
         UpdateTable();
     }
 
+    /// <summary>
+    /// Gets or sets the student ID property.
+    /// </summary>
     public string StudentId
     {
         get => _studentId;
@@ -49,6 +59,9 @@ public class OcenyVM : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// Gets or sets the subject ID property.
+    /// </summary>
     public string SubjectId
     {
         get => _subjectId;
@@ -62,6 +75,9 @@ public class OcenyVM : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// Gets or sets the value property (grade value).
+    /// </summary>
     public string Value
     {
         get => _value;
@@ -75,6 +91,9 @@ public class OcenyVM : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// Gets or sets the ID property.
+    /// </summary>
     public string ID
     {
         get => _id;
@@ -88,6 +107,9 @@ public class OcenyVM : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// Gets or sets the observable collection of grades for display.
+    /// </summary>
     public ObservableCollection<Grade> OcenyPodglad
     {
         get => _TableDisplay;
@@ -98,7 +120,14 @@ public class OcenyVM : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// Gets the command for adding a grade.
+    /// </summary>
     public ICommand Add { get; set; }
+    
+    /// <summary>
+    /// Gets the command for removing a grade.
+    /// </summary>
     public ICommand Remove { get; set; }
 
     private void RemoveFromDb()

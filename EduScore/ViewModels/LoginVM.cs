@@ -9,6 +9,9 @@ using EduScoreDatabase.CommandsQueries;
 
 namespace EduScore.ViewModels;
 
+/// <summary>
+/// Represents a view model for handling the login process in the EduScore application.
+/// </summary>
 public class LoginVM : INotifyPropertyChanged
 {
     private readonly EduScoreContext _context;
@@ -18,6 +21,10 @@ public class LoginVM : INotifyPropertyChanged
 
     private string _username;
 
+    /// <summary>
+    /// Initializes a new instance of the LoginVM class with the specified EduScoreContext.
+    /// </summary>
+    /// <param name="context">The EduScoreContext database context.</param>
     public LoginVM(EduScoreContext context)
     {
         _context = context;
@@ -25,6 +32,9 @@ public class LoginVM : INotifyPropertyChanged
         _loginstudent = new LoginStudent(_context);
     }
 
+    /// <summary>
+    /// Gets or sets the username property.
+    /// </summary>
     public string Name
     {
         get => _username;
@@ -37,6 +47,10 @@ public class LoginVM : INotifyPropertyChanged
             }
         }
     }
+    
+    /// <summary>
+    /// Gets or sets the password property.
+    /// </summary>
     public string Password
     {
         get => _password;
@@ -49,6 +63,10 @@ public class LoginVM : INotifyPropertyChanged
             }
         }
     }
+    
+    /// <summary>
+    /// Gets the command for the login action.
+    /// </summary>
     public ICommand LoginComm { get; }
     private void Login()
     {

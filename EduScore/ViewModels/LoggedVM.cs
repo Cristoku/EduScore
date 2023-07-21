@@ -8,12 +8,19 @@ using EduScoreDatabase.CommandsQueries;
 
 namespace EduScore.ViewModels;
 
+/// <summary>
+/// Represents a view model for handling the logged-in user's data display in the EduScore application.
+/// </summary>
 public class LoggedVM : INotifyPropertyChanged
 {
     private readonly ShowData _showData;
 
     private ObservableCollection<GradeConverted> _displayGrades;
 
+    /// <summary>
+    /// Initializes a new instance of the LoggedVM class with the specified student name.
+    /// </summary>
+    /// <param name="StudentName">The name of the logged-in student.</param>
     public LoggedVM(string StudentName)
     {
         _showData = new ShowData(new EduScoreContext());
@@ -23,10 +30,24 @@ public class LoggedVM : INotifyPropertyChanged
         OstatnieOceny();
     }
 
+    /// <summary>
+    /// Gets the command for navigating to the PlanLekcji view.
+    /// </summary>
     public BasicCommand PlanLekcjiCommand { get; set; }
+    
+    /// <summary>
+    /// Gets the command for navigating to the Przedmioty view.
+    /// </summary>
     public BasicCommand PrzedmiotyCommand { get; set; }
+    
+    /// <summary>
+    /// Gets the command for navigating to the Oceny view.
+    /// </summary>
     public BasicCommand OcenyCommand { get; set; }
 
+    /// <summary>
+    /// Gets or sets the observable collection to display the latest converted grades.
+    /// </summary>
     public ObservableCollection<GradeConverted> NajnowszeOceny
     {
         get => _displayGrades;

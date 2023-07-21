@@ -13,6 +13,9 @@ using System.Windows;
 
 namespace EduScore.ViewModels
 {
+    /// <summary>
+    /// Represents a view model for managing subjects in the EduScore application.
+    /// </summary>
 public class PrzedmiotyVM : INotifyPropertyChanged
 {
     private readonly EduScoreContext _context;
@@ -28,6 +31,10 @@ public class PrzedmiotyVM : INotifyPropertyChanged
 
     private string _value;
 
+    /// <summary>
+    /// Initializes a new instance of the PrzedmiotyVM class with the specified EduScoreContext.
+    /// </summary>
+    /// <param name="context">The EduScoreContext database context.</param>
     public PrzedmiotyVM(EduScoreContext context)
     {
         _context = context;
@@ -38,6 +45,9 @@ public class PrzedmiotyVM : INotifyPropertyChanged
         UpdateTable();
     }
 
+    /// <summary>
+    /// Gets or sets the subject name property.
+    /// </summary>
     public string SubjectName
     {
         get => _subjectName;
@@ -50,6 +60,10 @@ public class PrzedmiotyVM : INotifyPropertyChanged
             }
         }
     }
+    
+    /// <summary>
+    /// Gets or sets the ID property.
+    /// </summary>
     public string ID
     {
         get => _id;
@@ -62,7 +76,10 @@ public class PrzedmiotyVM : INotifyPropertyChanged
             }
         }
     }
-
+    
+    /// <summary>
+    /// Gets or sets the observable collection of subjects for display.
+    /// </summary>
     public ObservableCollection<Subject> OcenyPodglad
     {
         get => _TableDisplay;
@@ -73,7 +90,14 @@ public class PrzedmiotyVM : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// Gets the command for adding a subject.
+    /// </summary>
     public ICommand Add { get; set; }
+    
+    /// <summary>
+    /// Gets the command for removing a subject.
+    /// </summary>
     public ICommand Remove { get; set; }
 
     private void RemoveFromDb()

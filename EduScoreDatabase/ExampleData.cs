@@ -9,8 +9,15 @@ namespace EduScoreDatabase
 using System;
 using System.Linq;
 
+/// <summary>
+/// Represents a class responsible for seeding sample data in the database.
+/// </summary>
 public class ExampleData
 {
+    /// <summary>
+    /// Seeds sample data into the specified EduScoreContext database context if no data exists.
+    /// </summary>
+    /// <param name="dbContext">The EduScoreContext database context.</param>
     public void SeedData(EduScoreContext dbContext)
     {
         if (!dbContext.Students.Any())
@@ -140,7 +147,5 @@ public class ExampleData
         }
     }
 }
-
-
 
 }

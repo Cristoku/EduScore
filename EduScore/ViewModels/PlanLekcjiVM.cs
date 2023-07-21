@@ -13,6 +13,9 @@ using System.Windows;
 
 namespace EduScore.ViewModels
 {
+    /// <summary>
+    /// Represents a view model for managing lesson plans in the EduScore application.
+    /// </summary>
 public class PlanLekcjiVM : INotifyPropertyChanged
 {
     private readonly EduScoreContext _context;
@@ -30,6 +33,10 @@ public class PlanLekcjiVM : INotifyPropertyChanged
 
     private string _value;
 
+    /// <summary>
+    /// Initializes a new instance of the PlanLekcjiVM class with the specified EduScoreContext.
+    /// </summary>
+    /// <param name="context">The EduScoreContext database context.</param>
     public PlanLekcjiVM(EduScoreContext context)
     {
         _context = context;
@@ -40,6 +47,9 @@ public class PlanLekcjiVM : INotifyPropertyChanged
         UpdateTable();
     }
 
+    /// <summary>
+    /// Gets or sets the subject ID property.
+    /// </summary>
     public string SubjectId
     {
         get => _subjectId;
@@ -53,6 +63,9 @@ public class PlanLekcjiVM : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// Gets or sets the teacher name property.
+    /// </summary>
     public string TeacherName
     {
         get => _teacherName;
@@ -66,6 +79,9 @@ public class PlanLekcjiVM : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// Gets or sets the content property.
+    /// </summary>
     public string Content
     {
         get => _content;
@@ -79,6 +95,9 @@ public class PlanLekcjiVM : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// Gets or sets the ID property.
+    /// </summary>
     public string ID
     {
         get => _id;
@@ -92,6 +111,9 @@ public class PlanLekcjiVM : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// Gets or sets the observable collection of lesson plans for display.
+    /// </summary>
     public ObservableCollection<LessonPlan> OcenyPodglad
     {
         get => _TableDisplay;
@@ -102,7 +124,14 @@ public class PlanLekcjiVM : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// Gets the command for adding a lesson plan.
+    /// </summary>
     public ICommand Add { get; set; }
+    
+    /// <summary>
+    /// Gets the command for removing a lesson plan.
+    /// </summary>
     public ICommand Remove { get; set; }
 
     private void RemoveFromDb()
